@@ -1,0 +1,192 @@
+{
+  "chatInfo": {
+    "id": "1507833383",
+    "name": "示例私聊",
+    "type": "private"
+  },
+  "messages": [
+    {
+      "messageId": "1",
+      "messageSeq": "101",
+      "timestamp": "2024-03-02T14:09:55.000Z",
+      "sender": {
+        "uin": "1507833383",
+        "name": "朋友A"
+      },
+      "content": {
+        "text": "Hi~",
+        "reply": null
+      },
+      "rawMessage": {
+        "msgId": "1",
+        "msgSeq": "101",
+        "msgTime": "1709388595",
+        "elements": [
+          {
+            "elementType": 1,
+            "textElement": {
+              "content": "Hi~"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "messageId": "2",
+      "messageSeq": "102",
+      "timestamp": "2024-03-02T14:10:28.000Z",
+      "sender": {
+        "uin": "1585729597",
+        "name": "我"
+      },
+      "content": {
+        "text": "[图片: demo_image.JPG]"
+      },
+      "rawMessage": {
+        "msgId": "2",
+        "msgSeq": "102",
+        "msgTime": "1709388628",
+        "elements": [
+          {
+            "elementType": 2,
+            "picElement": {
+              "fileName": "demo_image.JPG",
+              "sourcePath": "C:\\QQ\\demo\\Pic\\demo_image.JPG",
+              "md5HexStr": "abc123",
+              "picWidth": 640,
+              "picHeight": 480
+            }
+          }
+        ]
+      }
+    },
+    {
+      "messageId": "3",
+      "messageSeq": "103",
+      "timestamp": "2024-03-02T14:11:32.000Z",
+      "sender": {
+        "uin": "1585729597",
+        "name": "我"
+      },
+      "content": {
+        "text": "[文件: report.png]"
+      },
+      "rawMessage": {
+        "msgId": "3",
+        "msgSeq": "103",
+        "msgTime": "1709388692",
+        "elements": [
+          {
+            "elementType": 3,
+            "fileElement": {
+              "fileName": "report.png",
+              "filePath": "C:\\QQ\\demo\\FileRecv\\report.png",
+              "fileMd5": "filemd5",
+              "fileUuid": "file-uuid"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "messageId": "4",
+      "messageSeq": "104",
+      "timestamp": "2024-03-02T14:12:11.000Z",
+      "sender": {
+        "uin": "1507833383",
+        "name": "朋友A"
+      },
+      "content": {
+        "text": "[回复 : 原消息]\n[表情177]收到",
+        "reply": {
+          "referencedMessageId": "1",
+          "content": "原消息"
+        }
+      },
+      "rawMessage": {
+        "msgId": "4",
+        "msgSeq": "104",
+        "msgTime": "1709388731",
+        "elements": [
+          {
+            "elementType": 7,
+            "replyElement": {
+              "senderUid": "1585729597",
+              "replyMsgTime": "1709388595"
+            }
+          },
+          {
+            "elementType": 6,
+            "faceElement": {
+              "faceIndex": 177
+            }
+          },
+          {
+            "elementType": 1,
+            "textElement": {
+              "content": "收到"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "messageId": "5",
+      "messageSeq": "105",
+      "timestamp": "2025-03-17T13:07:30.000Z",
+      "sender": {
+        "uin": "1585729597",
+        "name": "我"
+      },
+      "content": {
+        "text": "[[困]]"
+      },
+      "rawMessage": {
+        "msgId": "5",
+        "msgSeq": "105",
+        "msgTime": "1742216850",
+        "elements": [
+          {
+            "elementType": 11,
+            "marketFaceElement": {
+              "emojiPackageId": 237962,
+              "faceName": "[困]",
+              "emojiId": "821860bafef7473b99ff6b9358035954",
+              "key": "9b5f38f1fd04771a",
+              "staticFacePath": "C:\\QQ\\demo\\Emoji\\marketface\\237962\\821860bafef7473b99ff6b9358035954_aio.png",
+              "dynamicFacePath": "C:\\QQ\\demo\\Emoji\\marketface\\237962\\821860bafef7473b99ff6b9358035954"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "messageId": "6",
+      "messageSeq": "106",
+      "timestamp": "2024-03-23T09:40:20.000Z",
+      "sender": {
+        "uin": "1585729597",
+        "name": "我"
+      },
+      "content": {
+        "text": "[语音]"
+      },
+      "rawMessage": {
+        "msgId": "6",
+        "msgSeq": "106",
+        "msgTime": "1711186820",
+        "elements": [
+          {
+            "elementType": 4,
+            "pttElement": {
+              "fileName": "VOICE.amr",
+              "filePath": "C:\\QQ\\demo\\Ptt\\VOICE.amr",
+              "md5HexStr": "voice-md5",
+              "fileUuid": "voice-uuid"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

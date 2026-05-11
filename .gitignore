@@ -1,0 +1,52 @@
+# QQ data exporter standalone repository ignore rules.
+# Keep rules root-anchored unless the pattern is intentionally global.
+
+# Python / tooling
+/.venv/
+/.uv-cache/
+/.pytest_cache/
+/.ruff_cache/
+/.mypy_cache/
+/.coverage
+/htmlcov/
+*.py[cod]
+__pycache__/
+/src/**/*.egg-info/
+/src/**/*.dist-info/
+
+# Local runtime data
+/exports/
+/state/
+/dist/
+/build/
+/tmp*/
+/.tmp*/
+/.pytest_*/
+/pytest-cache-files-*/
+/.tmp_session*
+/.tmpllm_sessions*
+*.zip
+
+# Local secrets and editor state
+/.env
+/.env.*
+!.env.example
+/.idea/
+/.vscode/
+/.claude/
+/.codex
+
+# NapCat local runtime/config. The standalone repo keeps only the fast plugin source.
+/NapCatQQ/
+/NapCat/config.json
+/NapCat/napcat/cache/
+/NapCat/napcat/config/
+/NapCat/napcat/static/assets/
+/NapCat/napcat/static/index.html
+/NapCat/napcat/node_modules/
+
+# Do not let monorepo-side apps or analyzer runtime artifacts leak into exporter repo.
+/apps/
+/claude-code/
+/runtime_site_packages/
+/review_editor_human_feedback_list/

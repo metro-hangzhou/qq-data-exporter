@@ -1,0 +1,9 @@
+{
+  "name": "napcat-plugin-qq-data-fast",
+  "plugin": "QQ Data Fast History",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.mjs",
+  "description": "Expose a slim raw-history API for high-volume QQ export workflows.",
+  "author": "Codex"
+}
