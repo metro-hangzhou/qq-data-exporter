@@ -109,7 +109,7 @@ These families must be considered atomic during `main` / `runtime` sync.
 
 ### 5. NapCat plugin / launcher family
 
-- `NapCat/napcat/plugins/...`
+- `plugins/napcat-plugin-qq-data-fast/...`
 - `src/qq_data_integrations/napcat/...`
 - any launcher helper that starts, restarts, or configures NapCat
 

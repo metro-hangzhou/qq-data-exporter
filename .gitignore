@@ -36,14 +36,8 @@ __pycache__/
 /.claude/
 /.codex
 
-# NapCat local runtime/config. The standalone repo keeps only the fast plugin source.
-/NapCatQQ/
-/NapCat/config.json
-/NapCat/napcat/cache/
-/NapCat/napcat/config/
-/NapCat/napcat/static/assets/
-/NapCat/napcat/static/index.html
-/NapCat/napcat/node_modules/
+# NapCat runtime output/config. NapCatQQ itself is tracked as a submodule.
+/NapCat/
 
 # Do not let monorepo-side apps or analyzer runtime artifacts leak into exporter repo.
 /apps/

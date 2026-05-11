@@ -41,9 +41,9 @@ Do not:
 8. Keep the exporter independent from later LLM analysis code.
 9. Prefer structured array message payloads over CQ-code strings. Do not make CQ parsing the primary normalization path.
 10. CLI code must stay thin. Core normalization and export code must not depend on prompt_toolkit, Typer, or terminal UI concepts.
-11. `NapCatQQ/` under the repository root may be a local runtime checkout, Git submodule, or reference checkout, but it is intentionally ignored by this exporter repository unless a maintainer explicitly decides to pin it. Runtime code may discover configs and launcher scripts by relative path from the repo root, but message access still must use NapCat public HTTP/WS interfaces.
-11a. For Git/GitHub maintenance, treat `NapCatQQ/` as a separately managed upstream-tracking checkout, not ordinary exporter content. The exporter may reference it locally by relative path, but should not flatten it in a way that breaks future upstream `NapCatQQ` merges or obscures the runtime/exporter boundary.
-11b. The exporter-owned fast plugin is the only NapCat-tree source intentionally kept in this repo: `NapCat/napcat/plugins/napcat-plugin-qq-data-fast/`. The active NapCat runtime must install or link that plugin into its own plugin directory and be restarted after plugin code changes. See `docs/NapCatRuntime.md`.
+11. `NapCatQQ/` under the repository root is tracked as a Git submodule / upstream runtime-source reference. Runtime code may discover configs and launcher scripts by relative path from the repo root, but message access still must use NapCat public HTTP/WS interfaces.
+11a. For Git/GitHub maintenance, treat `NapCatQQ/` as a separately managed upstream-tracking checkout/submodule, not ordinary exporter content. The exporter may reference it locally by relative path, but should not flatten it in a way that breaks future upstream `NapCatQQ` merges or obscures the runtime/exporter boundary.
+11b. The exporter-owned fast plugin source lives at `plugins/napcat-plugin-qq-data-fast/`. The active NapCat runtime must install or link that plugin into its own plugin directory and be restarted after plugin code changes. See `docs/NapCatRuntime.md`.
 12. Prefer message-provided local resource paths such as `sourcePath`, `filePath`, `staticFacePath`, and `dynamicFacePath` when materializing media. Only fall back to QQ cache root discovery when those direct paths are missing or stale.
 13. Assume mixed legacy QQ and NTQQ cache layouts may coexist on the same machine. Media lookup must support both:
     - NTQQ-style paths under `nt_qq/nt_data/...`
@@ -53,7 +53,7 @@ Do not:
 
 For bulk history export, this repository currently has one approved optimization beyond the default public OneBot history action:
 
-- a NapCat runtime plugin under [NapCat/napcat/plugins/napcat-plugin-qq-data-fast](/d:/Coding_Project/IsThisShit/NapCat/napcat/plugins/napcat-plugin-qq-data-fast)
+- a NapCat runtime plugin source under [plugins/napcat-plugin-qq-data-fast](plugins/napcat-plugin-qq-data-fast)
 
 What it does:
 

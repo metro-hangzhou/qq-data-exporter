@@ -56,17 +56,17 @@ Repository rule:
 
 Relevant local paths:
 
-- vendored runtime shell: [NapCat](/d:/Coding_Project/IsThisShit/NapCat)
-- runtime root: [NapCat/napcat](/d:/Coding_Project/IsThisShit/NapCat/napcat)
-- upstream/source checkout: [NapCatQQ](/d:/Coding_Project/IsThisShit/NapCatQQ)
-- runtime surface reports: [dev/reports/napcat/INDEX.md](/d:/Coding_Project/IsThisShit/dev/reports/napcat/INDEX.md)
-- runtime operator handbook: [dev/handbooks/runtime/NapCatRuntime.md](/d:/Coding_Project/IsThisShit/dev/handbooks/runtime/NapCatRuntime.md)
+- upstream/runtime source reference: [NapCatQQ](NapCatQQ)
+- exporter fast plugin source: [plugins/napcat-plugin-qq-data-fast](plugins/napcat-plugin-qq-data-fast)
+- runtime setup handbook: [docs/NapCatRuntime.md](docs/NapCatRuntime.md)
+- runtime surface reports: [dev/reports/napcat/INDEX.md](dev/reports/napcat/INDEX.md)
 
 Git maintenance rule:
 
-- treat `NapCatQQ/` as a separately managed upstream-tracking checkout
-- treat `NapCat/` as a vendored runtime shell plus mutable local runtime state
-- do not flatten either tree into ordinary parent-repo content just for convenience
+- treat `NapCatQQ/` as a separately managed upstream-tracking submodule/reference checkout
+- treat `plugins/napcat-plugin-qq-data-fast/` as exporter-owned plugin source
+- treat any local `NapCat/` directory as ignored runtime output or compatibility state
+- do not flatten NapCat upstream/runtime trees into ordinary exporter content just for convenience
 
 ## Current Repository Decisions
 
@@ -85,25 +85,16 @@ These decisions remain active:
 
 ## Runtime Surface Rules
 
-For repository maintenance, classify the local `NapCat/` tree as:
+For repository maintenance, classify NapCat-related paths as:
 
-- `vendored runtime shell`
-  - top-level binaries, wrappers, launcher entrypoints, packaged runtime files
+- `runtime/source reference`
+  - `NapCatQQ/` Git submodule, pinned deliberately and updated separately from exporter feature work
+- `exporter-owned plugin source`
+  - `plugins/napcat-plugin-qq-data-fast/`
 - `mutable runtime state`
-  - `NapCat/napcat/cache/`
-  - `NapCat/napcat/config/`
-  - `NapCat/napcat/logs/`
-- `plugin surface`
-  - `NapCat/napcat/plugins/`
-  - `NapCat/napcat/config/plugins/`
-- `generated runtime artifacts`
-  - `NapCat/napcat/node_modules/`
-  - `NapCat/napcat/static/`
-  - native packed runtime blobs
-- `repo-side launcher bridge`
-  - [start_napcat_logged.bat](/d:/Coding_Project/IsThisShit/start_napcat_logged.bat)
-  - [restart_napcat_service.ps1](/d:/Coding_Project/IsThisShit/restart_napcat_service.ps1)
-  - [state/napcat_logs](/d:/Coding_Project/IsThisShit/state/napcat_logs)
+  - local runtime cache/config/log/static/node_modules output, normally outside this repo or under ignored `NapCat/`
+- `runtime installation target`
+  - the active NapCat runtime plugin directory that receives a copy or link of `plugins/napcat-plugin-qq-data-fast/`
 
 Implications:
 

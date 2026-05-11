@@ -1,6 +1,6 @@
 # NapCat Runtime Reference
 
-QQ Data Exporter depends on a running NapCatQQ runtime, but the runtime itself is not vendored into this repository.
+QQ Data Exporter depends on a running NapCatQQ runtime, but exporter code and NapCat runtime code are separate maintenance surfaces.
 
 ## Dependency Boundary
 
@@ -13,19 +13,19 @@ The exporter talks to NapCat only through public runtime interfaces:
 
 The exporter must not import NapCat internal TypeScript modules or depend on QQ injection hooks.
 
-## Recommended Local Layout
+## Repository Layout
 
-For local development, keep a NapCat runtime checkout next to this exporter repo or under the exporter root as an ignored reference checkout:
+Recommended split-repo layout:
 
 ```text
 qq-data-exporter/
-  NapCatQQ/              # optional local upstream/runtime checkout, gitignored
-  NapCat/napcat/plugins/napcat-plugin-qq-data-fast/
+  NapCatQQ/                                # Git submodule / upstream runtime-source reference
+  plugins/napcat-plugin-qq-data-fast/      # exporter-owned fast-history plugin source
   src/
   tests/
 ```
 
-`NapCatQQ/` is intentionally ignored by this repository. If a team wants a pinned runtime reference, add it as a Git submodule or document the exact upstream commit used by the release package.
+`NapCatQQ/` is tracked as a submodule so GitHub shows it as a runtime reference instead of a flattened copy of the NapCat upstream tree. It may be used by maintainers for source lookup, local runtime builds, and plugin installation targets, but exporter message access must still go through HTTP/WS.
 
 Suggested upstream:
 
@@ -33,24 +33,34 @@ Suggested upstream:
 https://github.com/NapNeko/NapCatQQ.git
 ```
 
+Submodule setup:
+
+```bash
+git submodule update --init --recursive
+```
+
 ## Fast Plugin
 
 This repository keeps only the exporter-owned fast-history plugin source:
 
 ```text
-NapCat/napcat/plugins/napcat-plugin-qq-data-fast/
+plugins/napcat-plugin-qq-data-fast/
 ```
 
-During runtime setup, install or copy that plugin into the active NapCat runtime plugin directory, then restart NapCat. Plugin route changes are not live until NapCat is restarted.
+During runtime setup, install or link this plugin into the active NapCat runtime plugin directory, then restart NapCat. Plugin route changes are not live until NapCat is restarted.
 
 If the plugin is missing or disabled, the exporter must still work through public OneBot history APIs, but bulk history export will be slower.
 
-## Runtime Discovery
+## Runtime State
 
-The exporter may discover a local runtime by conventional relative paths, but message access still goes through HTTP/WS:
+Runtime config, logs, caches, generated static assets, and `node_modules` belong to the active NapCat runtime, not to exporter source control. Keep them outside this repo or under ignored local runtime directories.
 
-- `NapCatQQ/`
-- `NapCat/napcat/`
-- paths configured through CLI options or environment-specific config
+The exporter may discover a local runtime by conventional relative paths, but those paths are operational conveniences, not source-of-truth APIs:
 
-Local runtime config, logs, caches, and generated static files must stay outside version control.
+- `NapCatQQ/` for upstream source/reference lookup
+- local runtime paths configured by CLI options or environment-specific config
+- optional ignored `NapCat/` compatibility/runtime-output directory
+
+## Maintainer Rule
+
+Do not flatten `NapCatQQ/` into the exporter repository. If the runtime reference needs to move, update the submodule pointer deliberately and keep exporter changes in a separate commit when possible.
