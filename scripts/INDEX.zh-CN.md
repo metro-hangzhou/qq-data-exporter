@@ -4,35 +4,27 @@
 
 ## 当前 active scripts
 
-### 共轨 / 校验
+### NapCat 媒体 / 转发诊断
 
-- [validate_subagent_framework.py](validate_subagent_framework.py)
-
-### analyzer / 本地语料
-
-- [run_benshi_live_llm_smoke.py](run_benshi_live_llm_smoke.py)
-- [run_local_corpus_analysis_smoke.py](run_local_corpus_analysis_smoke.py)
-- [build_benshi_cross_group_review.py](build_benshi_cross_group_review.py)
-- [build_benshi_review_packets.py](build_benshi_review_packets.py)
-- [parse_benshi_review_packets.py](parse_benshi_review_packets.py)
-- [run_review_editor_server.py](run_review_editor_server.py)
-- [init_judgment_policy_state.py](init_judgment_policy_state.py)
-- [build_judgment_policy_slice.py](build_judgment_policy_slice.py)
-- [ingest_judgment_policy_patch.py](ingest_judgment_policy_patch.py)
-- [promote_judgment_policy_state.py](promote_judgment_policy_state.py)
-- [update_benshi_posterior.py](update_benshi_posterior.py)
-
-### exporter evidence / probe
-
-- [export_evidence_manifests.py](export_evidence_manifests.py)
+- [benchmark_media_resolution.py](benchmark_media_resolution.py)
+- [inspect_forward_payload.py](inspect_forward_payload.py)
+- [inspect_review_candidate_forward.py](inspect_review_candidate_forward.py)
 - [probe_asset_routes.py](probe_asset_routes.py)
-- [profile_logic_test_buckets.py](profile_logic_test_buckets.py)
+- [probe_napcat_forward_live.ps1](probe_napcat_forward_live.ps1)
+
+### 导出复测工具
+
+- [targeted_missing_retest.py](../targeted_missing_retest.py)
+- [run_targeted_missing_retest.bat](../run_targeted_missing_retest.bat)
+
+这个拆分仓库只保留 exporter / runtime 诊断脚本。
+review-editor、ORCH 和后续 analyzer 脚本仍属于原开发工作区，不属于
+exporter release surface。
 
 ## 历史 / 归档脚本面
 
-当前 worktree 里已经不在 active surface 的旧 tracked scripts，都已归档到：
-
-- [scripts surface archive](/d:/Coding_Project/IsThisShit/dev/archive/system_refactor_20260327/scripts_surface_20260327/README.md)
+当前拆分仓库里已经不在 active surface 的旧 tracked scripts，保留在原开发
+工作区的 archive 中；它们不会复制进 exporter repo。
 
 ## 这份文件的作用
 
